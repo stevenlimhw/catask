@@ -4,12 +4,7 @@ import { Link, Outlet } from 'react-router-dom'
 
 const App = () => {
     return <Fragment>
-        <nav style={{
-            // Temporary styling (use CSS later)
-            marginTop: "1.5rem",
-            borderBottom: "solid 1px",
-            paddingBottom: "1rem",
-        }}>
+        <nav className="navigation">
             <Link to='/'>Home</Link>
             <Link to='dashboard'>Dashboard</Link>
             <Link to='today'>Today</Link>
