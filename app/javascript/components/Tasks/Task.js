@@ -15,9 +15,9 @@ const Task = () => {
         .catch(resp => console.log(resp))
     }, [])
     
-    const day_numbers = [1, 2, 3, 4, 5, 6, 7]
-    const day_names = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
-
+    const day_numbers = [0, 1, 2, 3, 4, 5, 6, 7]
+    const day_names = ["Inbox", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
+    // Inbox is for tasks without a deadline
     return <div className="">
         {
             isLoaded &&
@@ -27,7 +27,7 @@ const Task = () => {
             .map(day_number =>
                 {
                     return <div className="column-card">
-                        <h1>{day_names[day_number - 1]}</h1>
+                        <h1>{day_names[day_number]}</h1>
                         {
                             tasks
                             .filter(task => {
