@@ -1,6 +1,6 @@
 import axios from 'axios'
 import React, { useState, useEffect, Fragment } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, Navigate } from 'react-router-dom'
 
 const Task = () => {
     const [tasks, setTasks] = useState([])
@@ -15,10 +15,10 @@ const Task = () => {
         })
         .catch(resp => console.log(resp))
     }, [])
-    
     const day_numbers = [0, 1, 2, 3, 4, 5, 6, 7]
     const day_names = ["Inbox", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
     // Inbox is for tasks without a deadline
+
     return <div className="">
         {
             isLoaded &&
@@ -39,9 +39,11 @@ const Task = () => {
                                 const { id, deadline, day, title, description, isCompleted, tag } = task.attributes
                                 return <Fragment key={id}>
                                     <div className="checkbox">[Checkbox here]</div>
-                                    <div className="title">{title}</div>
+                                    <div>{title}</div>
                                     <div>{deadline}</div>
                                     <div className="tag">{tag}</div>
+                                    <div>{id}</div>
+                                    <Link to={`/tasks/${id}`}className="title">View Task</Link>
                                     <br/>
                                 </Fragment>
                             })

@@ -19,14 +19,17 @@ const AddTask = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-
         const csrfToken = document.querySelector('[name=csrf-token]').content;
         axios.defaults.headers.common['X-CSRF-TOKEN'] = csrfToken;
 
-        const task_id = new Date().getTime().toString();
-        axios.post('api/v1/tasks', {task, task_id})
-        .then(resp => console.log(resp))
+        axios.post('api/v1/tasks', task)
+        .then(resp => {
+            setTask({title: "", description: "", deadline: "", tag: ""});
+            window.location.reload(); // change will immediately appear
+            // TODO: make a certain notice that task has been added
+        })
         .catch(error => console.log(error));
+
     }
 
 

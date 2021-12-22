@@ -1,7 +1,9 @@
 class CreateTasks < ActiveRecord::Migration[6.1]
   def change
     create_table :tasks do |t|
-      t.day :integer
+
+      # t.string :uuid
+      t.integer :day
       t.date :deadline
       t.string :title
       t.string :description

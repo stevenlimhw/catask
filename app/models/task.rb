@@ -8,4 +8,9 @@ class Task < ApplicationRecord
             self.day = 0
         end
     end
+
+    # def generate_uuid
+    #     self.id = SecureRandom.uuid
+    # end
+
 end

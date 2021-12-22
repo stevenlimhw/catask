@@ -10,6 +10,7 @@ import App from '../components/App'
 import Dashboard from '../components/Tasks/Dashboard'
 import TaskDetails from '../components/Task/TaskDetails'
 import Today from '../components/Day/Today'
+import UpdateTask from '../components/Task/UpdateTask'
 
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -18,8 +19,11 @@ document.addEventListener('DOMContentLoaded', () => {
         <Routes>
           <Route path="/" element={<App />}>
             <Route path="dashboard" element={<Dashboard />} />
-            <Route path="/taskdetails" element={<TaskDetails />} />
-            <Route path="/today" element={<Today />} />
+            <Route path="tasks/:id" element={<TaskDetails />}>
+              <Route path="edit" element={<UpdateTask />} />
+            </Route>
+            <Route path="today" element={<Today />} />
+            <Route path="*" element={<h1>Not Found</h1>} />
           </Route>
         </Routes>
     </Router>,

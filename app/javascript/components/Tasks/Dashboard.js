@@ -5,10 +5,12 @@ import Task from './Task'
 const Dashboard = () => {
     return <Fragment>
         <h1>Dashboard</h1>
+        
         <div className="dashboard-wrapper">
             {/* one card for each day */}
             <Task />
         </div>
+
         <div className="add-task">
             <AddTask />
         </div>
