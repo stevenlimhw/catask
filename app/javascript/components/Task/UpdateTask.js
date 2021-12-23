@@ -1,6 +1,6 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
-import { useNavigate, useParams } from 'react-router'
+import { useNavigate, useParams } from 'react-router-dom'
 import axios from 'axios'
 
 const UpdateTask = () => {
@@ -35,6 +35,11 @@ const UpdateTask = () => {
         setNewTask({...newTask, [name]: value});
     }
 
+    const handleDiscardChanges = () => {
+        navigate(`/tasks/${id}`); // exit 'edit mode' by redirection
+        window.location.reload(); // reload to show changes made
+    }
+
     return (
         <div>
             <form onSubmit={handleSubmit}>
@@ -59,6 +64,7 @@ const UpdateTask = () => {
                     value={newTask.tag}
                     onChange={handleChange}></input>
                 <button type="submit">Save Changes</button>
+                <button onClick={handleDiscardChanges}>Discard Changes</button>
             </form>
         </div>
     )
