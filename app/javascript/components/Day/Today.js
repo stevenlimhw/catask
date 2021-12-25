@@ -1,7 +1,19 @@
-import React from 'react'
+import React, { Fragment } from 'react'
+import Tasks from './Tasks'
+import AddTask from '../AddTask/AddTask'
 
 const Today = () => {
-    return <div></div>
+    return (
+        <Fragment>
+            <h1><div>Tasks for Today</div></h1>
+            <div>
+                <Tasks />
+            </div>
+            <div>
+                <AddTask />
+            </div>
+        </Fragment>
+    )
 }
 
 export default Today

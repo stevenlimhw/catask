@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react'
-import AddTask from './AddTask'
-import Task from './Task'
+import AddTask from '../AddTask/AddTask'
+import Tasks from './Tasks'
 
 const Dashboard = () => {
     return <Fragment>
@@ -8,7 +8,7 @@ const Dashboard = () => {
         
         <div className="dashboard-wrapper">
             {/* one card for each day */}
-            <Task />
+            <Tasks />
         </div>
 
         <div className="add-task">

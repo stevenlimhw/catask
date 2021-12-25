@@ -1,13 +1,14 @@
 import axios from 'axios'
 import React, { useState, useEffect, Fragment } from 'react'
 import { Link, Navigate } from 'react-router-dom'
+import CurrentWeek from '../DateTime/CurrentWeek'
 
-const Task = () => {
+const Tasks = () => {
     const [tasks, setTasks] = useState([])
     const [isLoaded, setIsLoaded] = useState(false)
 
     useEffect(() => {
-        axios.get('/api/v1/tasks.json')
+        axios.get('/api/v1/tasks')
         .then(resp => {
             // resp.data is an array of objects
             setTasks(resp.data.data)
@@ -18,7 +19,7 @@ const Task = () => {
     const day_numbers = [0, 1, 2, 3, 4, 5, 6, 7]
     const day_names = ["Inbox", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
     // Inbox is for tasks without a deadline
-
+    
     return <div className="">
         {
             isLoaded &&
@@ -32,8 +33,8 @@ const Task = () => {
                         {
                             tasks
                             .filter(task => {
-                                const { day } = task.attributes
-                                return day === day_number
+                                const { day, deadline } = task.attributes
+                                return day === day_number && <CurrentWeek date={deadline} />;
                             })
                             .map(task => {
                                 const { id, deadline, day, title, description, isCompleted, tag } = task.attributes
@@ -43,7 +44,7 @@ const Task = () => {
                                     <div>{deadline}</div>
                                     <div className="tag">{tag}</div>
                                     <div>{id}</div>
-                                    <Link to={`/tasks/${id}`}className="title">View Task</Link>
+                                    <Link to={`/tasks/${id}`} className="title">View Task</Link>
                                     <br/>
                                 </Fragment>
                             })
@@ -56,4 +57,4 @@ const Task = () => {
     </div>
 }
 
-export default Task
+export default Tasks

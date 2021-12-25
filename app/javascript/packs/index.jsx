@@ -7,7 +7,7 @@ import ReactDOM from 'react-dom'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 
 import App from '../components/App'
-import Dashboard from '../components/Tasks/Dashboard'
+import Dashboard from '../components/Dashboard/Dashboard'
 import TaskDetails from '../components/Task/TaskDetails'
 import Today from '../components/Day/Today'
 import UpdateTask from '../components/Task/UpdateTask'

@@ -1,2 +1,5 @@
 - make a confirmation component before deleting a task
-- 
+- make quickform (for adding task) via dashboard
+
+TODO: Make Dashboard view only show this week's tasks
+    - check day.js IsoWeek API
