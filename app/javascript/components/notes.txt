@@ -3,3 +3,7 @@
 
 TODO: Make Dashboard view only show this week's tasks
     - check day.js IsoWeek API
+    - completed on Sunday 26 Dec 21
+
+TODO: Create a sorting feature on the all tasks view
+    - by tag, by deadline

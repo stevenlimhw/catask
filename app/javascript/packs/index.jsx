@@ -11,6 +11,7 @@ import Dashboard from '../components/Dashboard/Dashboard'
 import TaskDetails from '../components/Task/TaskDetails'
 import Today from '../components/Day/Today'
 import UpdateTask from '../components/Task/UpdateTask'
+import AllTasks from '../components/AllTasks/AllTasks'
 
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -18,6 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
     <Router>
         <Routes>
           <Route path="/" element={<App />}>
+            <Route exact path="tasks" element={<AllTasks />} />
             <Route path="dashboard" element={<Dashboard />} />
             <Route path="tasks/:id" element={<TaskDetails />}>
               <Route path="edit" element={<UpdateTask />} />

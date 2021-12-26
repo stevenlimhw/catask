@@ -8,6 +8,7 @@ const App = () => {
             <Link to='/'>Home</Link>
             <Link to='dashboard'>Dashboard</Link>
             <Link to='today'>Today</Link>
+            <Link to='tasks'>Tasks</Link>
             {/* TODO: Logout link here */}
         </nav>
         <Outlet />

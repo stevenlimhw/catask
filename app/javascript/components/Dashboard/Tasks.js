@@ -1,12 +1,16 @@
 import axios from 'axios'
 import React, { useState, useEffect, Fragment } from 'react'
 import { Link, Navigate } from 'react-router-dom'
-import CurrentWeek from '../DateTime/CurrentWeek'
 
 const Tasks = () => {
+
+    // dayjs initialisation
+    const dayjs = require('dayjs');
+    const isoWeek = require('dayjs/plugin/isoWeek');
+    dayjs.extend(isoWeek);
+
     const [tasks, setTasks] = useState([])
     const [isLoaded, setIsLoaded] = useState(false)
-
     useEffect(() => {
         axios.get('/api/v1/tasks')
         .then(resp => {
@@ -34,14 +38,15 @@ const Tasks = () => {
                             tasks
                             .filter(task => {
                                 const { day, deadline } = task.attributes
-                                return day === day_number && <CurrentWeek date={deadline} />;
+
+                                return day === day_number && (dayjs(deadline).isoWeek() === dayjs().isoWeek());
                             })
                             .map(task => {
                                 const { id, deadline, day, title, description, isCompleted, tag } = task.attributes
                                 return <Fragment key={id}>
                                     <div className="checkbox">[Checkbox here]</div>
                                     <div>{title}</div>
-                                    <div>{deadline}</div>
+                                    <div>{dayjs(deadline).format("DD/MM/YYYY")}</div>
                                     <div className="tag">{tag}</div>
                                     <div>{id}</div>
                                     <Link to={`/tasks/${id}`} className="title">View Task</Link>
