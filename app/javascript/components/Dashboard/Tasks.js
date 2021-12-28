@@ -1,6 +1,7 @@
 import axios from 'axios'
 import React, { useState, useEffect, Fragment } from 'react'
 import { Link, Navigate } from 'react-router-dom'
+import '../../../assets/stylesheets/application.css'
 
 const Tasks = () => {
 
@@ -24,40 +25,39 @@ const Tasks = () => {
     const day_names = ["Inbox", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
     // Inbox is for tasks without a deadline
     
-    return <div className="">
+    return <div>
         {
             isLoaded &&
-            <Fragment>
+            <div className="dashboard-wrapper">
             {
-            day_numbers
+            day_numbers 
             .map(day_number =>
-                {
-                    return <div className="column-card">
-                        <h1>{day_names[day_number]}</h1>
+                { 
+                    return <div className="dashboard-card"> 
+                        <div className="dashboard-day-title">{day_names[day_number]}</div>
                         {
                             tasks
                             .filter(task => {
                                 const { day, deadline } = task.attributes
-
-                                return day === day_number && (dayjs(deadline).isoWeek() === dayjs().isoWeek());
+                                return (day === day_number) && 
+                                       (dayjs(deadline).isoWeek() === dayjs().isoWeek());
                             })
                             .map(task => {
                                 const { id, deadline, day, title, description, isCompleted, tag } = task.attributes
-                                return <Fragment key={id}>
-                                    <div className="checkbox">[Checkbox here]</div>
+                                return <div key={id} className="dashboard-task">
+                                    {/* <div className="checkbox">[Checkbox here]</div> */}
                                     <div>{title}</div>
-                                    <div>{dayjs(deadline).format("DD/MM/YYYY")}</div>
-                                    <div className="tag">{tag}</div>
-                                    <div>{id}</div>
+                                    {/* <div>{dayjs(deadline).format("DD/MM/YYYY")}</div> */}
+                                    {/* <div className="tag">{tag}</div> */}
                                     <Link to={`/tasks/${id}`} className="title">View Task</Link>
                                     <br/>
-                                </Fragment>
+                                </div>
                             })
                         }
-                    </div>
+                    </div>    
                 })
             }
-            </Fragment>
+            </div>
         }
     </div>
 }
