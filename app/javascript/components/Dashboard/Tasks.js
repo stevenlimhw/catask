@@ -50,11 +50,11 @@ const Tasks = () => {
                                     {/* <div className="tag">{tag}</div> */}
                                     <Link to={`/tasks/${id}`} className="dashboard-task-title">{title}</Link>
                                 </div> 
-                            })
-                        }  
+                            }) 
+                        }
                     </div>    
-                }) 
-            }
+                })
+            } 
             </div>
         }
     </div>

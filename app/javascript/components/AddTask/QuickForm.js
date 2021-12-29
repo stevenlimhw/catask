@@ -15,6 +15,14 @@ const QuickForm = (props) => {
                         className="title-input"
                         >
                     </input>
+                    <input 
+                        type="date"
+                        name="deadline"
+                        value={task.deadline} 
+                        onChange={handleChange} 
+                        className="date-input"
+                        >
+                    </input>
                     <button type="submit" className="add-btn">
                         <img 
                             src="https://cdn-icons-png.flaticon.com/512/32/32339.png"
@@ -22,19 +30,11 @@ const QuickForm = (props) => {
                             id="addtask-icon"
                         />  
                     </button> 
+                    <Link to="/addtaskadvanced" className="fields-btn">more fields</Link>
                 </div>
-                <input 
-                    type="date"
-                    name="deadline"
-                    value={task.deadline} 
-                    onChange={handleChange} 
-                    placeholder="task deadline"
-                    >
-                </input> 
-            <Link to="/addtaskadvanced">more fields</Link>
-            </form>
+            </form> 
         </div>
-    )
+    ) 
 } 
 
 export default QuickForm

@@ -13,7 +13,6 @@ const Dashboard = () => {
             {/* one card for each day */}
             <Tasks />
         </div>
-
     </Fragment>
 }
 
