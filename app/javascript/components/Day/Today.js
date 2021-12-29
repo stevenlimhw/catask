@@ -10,7 +10,7 @@ const Today = () => {
                 <Tasks />
             </div>
             <div>
-                <AddTask />
+                <AddTask isQuickForm={true} />
             </div>
         </Fragment>
     )

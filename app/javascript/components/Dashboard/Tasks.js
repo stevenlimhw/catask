@@ -46,16 +46,14 @@ const Tasks = () => {
                                 const { id, deadline, day, title, description, isCompleted, tag } = task.attributes
                                 return <div key={id} className="dashboard-task">
                                     {/* <div className="checkbox">[Checkbox here]</div> */}
-                                    <div>{title}</div>
                                     {/* <div>{dayjs(deadline).format("DD/MM/YYYY")}</div> */}
                                     {/* <div className="tag">{tag}</div> */}
-                                    <Link to={`/tasks/${id}`} className="title">View Task</Link>
-                                    <br/>
-                                </div>
+                                    <Link to={`/tasks/${id}`} className="dashboard-task-title">{title}</Link>
+                                </div> 
                             })
-                        }
+                        }  
                     </div>    
-                })
+                }) 
             }
             </div>
         }

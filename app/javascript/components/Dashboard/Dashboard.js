@@ -7,13 +7,13 @@ const Dashboard = () => {
     return <Fragment>
         <h1>Dashboard</h1>
         <div>
+            <AddTask isQuickForm={true}/>
+        </div>
+        <div>
             {/* one card for each day */}
             <Tasks />
         </div>
 
-        <div>
-            <AddTask />
-        </div>
     </Fragment>
 }
 

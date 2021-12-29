@@ -12,6 +12,7 @@ import TaskDetails from '../components/Task/TaskDetails'
 import Today from '../components/Day/Today'
 import UpdateTask from '../components/Task/UpdateTask'
 import AllTasks from '../components/AllTasks/AllTasks'
+import AddTask from '../components/AddTask/AddTask'
 
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -25,6 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
               <Route path="edit" element={<UpdateTask />} />
             </Route>
             <Route path="today" element={<Today />} />
+            <Route path="addtaskadvanced" element={<AddTask isQuickTask={false} />} />
             <Route path="*" element={<h1>Not Found</h1>} />
           </Route>
         </Routes>

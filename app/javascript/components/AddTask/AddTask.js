@@ -1,10 +1,11 @@
 import React, { Fragment, useState, useEffect } from 'react'
 import Form from './Form'
+import QuickForm from './QuickForm'
 import axios from 'axios'
 
 
 
-const AddTask = () => {
+const AddTask = (props) => {
 
     const [task, setTask] = useState({title: "", description: "", deadline: "", tag: ""});
 
@@ -33,15 +34,25 @@ const AddTask = () => {
     }
 
 
-    return (
-        <Fragment>
+    return props.isQuickForm 
+    ? (
+        <div>
+            <QuickForm
+                handleChange={handleChange}
+                handleSubmit={handleSubmit}
+                task={task}
+            />
+        </div>
+    )
+    : (
+        <div>
             <Form 
                 handleChange={handleChange} 
                 handleSubmit={handleSubmit} 
                 task={task} 
                 />
-        </Fragment>
-    )
+        </div>
+    );
 }
 
 export default AddTask
