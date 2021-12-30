@@ -16,25 +16,28 @@ const AllTasks = () => {
     }, []);
 
     return (
-        <div className="">
+        <div>
             <h1>All Tasks</h1>
             <h4>[Sort Options Here]</h4>
+            <br />
+            <div className="tasks-container">
             {
                 tasks.map((task) => {
                     const { id, title, description, deadline, tag } = task.attributes;
                     return (
-                        <div className="wrapper" key={id}>
-                            {/* <div>[Checkbox Here]</div> */}
-                            <h2>{title}</h2>
-                            <div>{description}</div>
-                            <div>{deadline}</div>
-                            <div>{tag}</div>
-                            <Link to={`/tasks/${id}`}>View Task</Link>
-                            <br />
-                        </div>
-                    )
-                })
-            }
+                        <Link to={`/tasks/${id}`}>
+                            <div className="alltasks-task" key={id}>
+                                <div className="task-title">{title}</div>
+                                <div className="task-description">{description}</div>
+                                <div>{deadline}</div>
+                                <div>{tag}</div>
+                                <br />
+                            </div>
+                        </Link>
+                    ) 
+                }) 
+            } 
+            </div>
         </div>
     )
 }

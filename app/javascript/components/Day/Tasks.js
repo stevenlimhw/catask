@@ -24,7 +24,7 @@ const Tasks = () => {
         <div>
         {
             isLoaded &&
-            <Fragment>
+            <div className="today-wrapper">
                 {
                     tasks.filter((task) => {
                         const { deadline } = task.attributes;
@@ -32,18 +32,17 @@ const Tasks = () => {
                     })
                     .map((task) => {
                         const { id, deadline, day, title, description, isCompleted, tag } = task.attributes;
-                        return <Fragment key={id}>
-                            <div className="checkbox">[Checkbox here]</div>
-                            <div>{title}</div>
-                            <div>{deadline}</div>
-                            <div className="tag">{tag}</div>
-                            <div>{id}</div>
-                            <Link to={`/tasks/${id}`} className="title">View Task</Link>
-                            <br/>
-                        </Fragment>
+                        return <Link to={`/tasks/${id}`}>
+                            <div key={id} className="today-task">
+                                <div className="task-title">{title}</div>
+                                <div className="task-description">{description}</div>
+                                <div>Due: {deadline}</div>
+                                <div className="tag">{tag}</div>
+                            </div>
+                        </Link>
                     })
                 }
-            </Fragment>
+            </div> 
         }
         </div>
     )

@@ -31,14 +31,16 @@ const TaskDetails = () => {
 
     const { title, description, deadline, tag } = task;
     return (
-        <div className="wrapper">
+        <div>
             <h1>{title}</h1>
-            <h4>{description}</h4>
+            <h4>{description}</h4> 
             <h4>{deadline}</h4>
             <h4>{tag}</h4>
-            <button><Link to={`/tasks/${id}/edit`} className="button">Edit Task</Link></button>
-            <button onClick={deleteTask}>Delete Task</button>
-            <Outlet />
+            <div className="taskdetails-wrapper">
+                <Link to={`/tasks/${id}/edit`}><div className="btn">Edit Task</div></Link>
+                <button className="btn" onClick={deleteTask}>Delete Task</button>
+                <Outlet />
+            </div>
         </div>
     )
 }

@@ -1,12 +1,45 @@
 * {
   margin: 0;
   padding: 0;
+  text-decoration: none;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
 
-h1 {
-  margin: 2rem;
+h1,
+h4 {
+  margin: 2rem 0 0 2rem;
+}
+
+.task-title {
+  text-decoration: none;
+  color: black;
+  font-weight: 700;
+}
+
+.task-description {
+  font-size: 0.8rem;
+}
+
+.btn {
+  text-decoration: none;
+  font-size: 1rem;
+  color: black;
+  border: none;
+  box-sizing: border-box;
+  margin: 0 0.5rem 0 0;
+  padding: 0.5rem;
+  width: fit-content;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  transition: all;
+}
+
+.btn:hover {
+  outline: none;
+  box-shadow: none;
+  border: 1px solid #f0f0f0;
 }
 
 /* dashboard */
@@ -34,6 +67,7 @@ h1 {
 }
 
 .dashboard-task {
+  text-decoration: none;
   margin: 0.5rem;
   padding: 1rem;
   border: 0.1px solid #f0f0f0;
@@ -44,33 +78,6 @@ h1 {
 .dashboard-task:hover {
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
-
-.dashboard-task-title {
-  text-decoration: none;
-  padding: 0.2rem;
-  color: black;
-  font-weight: 500;
-}
-
-/* .view-task-button {
-  display: inline-block;
-  box-sizing: border-box;
-
-  background-color: white;
-  color: black;
-  border: 1px solid #f0f0f0;
-
-  font-size: 0.7rem;
-  border-radius: 10px;
-  padding: 0.2rem;
-  margin: 0.2rem 0;
-  transition: all 0.3s;
-} */
-
-/* .view-task-button:hover {
-  background-color: black;
-  color: white;
-} */
 
 /* navbar */
 
@@ -145,7 +152,6 @@ h1 {
   box-shadow: none;
 }
 
-
 .add-btn {
   text-decoration: none;
   border: none;
@@ -185,4 +191,58 @@ h1 {
   font-size: 1rem;
   padding: 1rem;
   border: 1px solid red;
+}
+
+/* today */
+
+.today-wrapper {
+  display: grid;
+  /* grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); */
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  margin: 1rem;
+}
+
+.today-task {
+  box-sizing: border-box;
+  color: black;
+  padding: 1rem;
+  border-radius: 10px;
+  border: 1.5px solid #f0f0f0;
+  margin: 0 0 0 1rem;
+  transition: all 0.3s;
+}
+
+.today-task:hover {
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+/* all tasks */
+
+.tasks-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  gap: 1rem;
+  margin: 1rem;
+}
+
+.alltasks-task {
+  box-sizing: border-box;
+  color: black;
+  padding: 1rem;
+  border-radius: 10px;
+  border: 1.5px solid #f0f0f0;
+  margin: 0 0 0 1rem;
+  transition: all 0.3s;
+}
+
+.alltasks-task:hover {
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+/* taskdetails */
+
+.taskdetails-wrapper {
+  display: flex;
+  margin: 2rem;
 }
