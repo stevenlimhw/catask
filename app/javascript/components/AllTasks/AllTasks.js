@@ -10,21 +10,21 @@ const AllTasks = () => {
         axios.get("/api/v1/tasks")
         .then(resp => {
             setTasks(resp.data.data);
-            console.log(resp.data.data);
+            // console.log(resp.data.data); // debugging
         })
         .catch(err => console.log(err));
     }, []);
 
     return (
-        <div>
+        <div className="alltasks-wrapper">
             <h1>All Tasks</h1>
-            <h4>[Sort Options Here]</h4>
+            {/* <Sort tasks={tasks}/> */}
             <br />
             <div className="tasks-container">
             {
                 tasks.map((task) => {
                     const { id, title, description, deadline, tag } = task.attributes;
-                    return (
+                    return ( 
                         <Link to={`/tasks/${id}`}>
                             <div className="alltasks-task" key={id}>
                                 <div className="task-title">{title}</div>
@@ -32,8 +32,8 @@ const AllTasks = () => {
                                 <div>{deadline}</div>
                                 <div>{tag}</div>
                                 <br />
-                            </div>
-                        </Link>
+                            </div> 
+                        </Link> 
                     ) 
                 }) 
             } 

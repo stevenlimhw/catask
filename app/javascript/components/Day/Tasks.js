@@ -1,11 +1,13 @@
-import React, { useState, useEffect, Fragment } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
+// import '../../../assets/stylesheets/application.css'
+import { UserContext } from '../App'
 
 const Tasks = () => {
+
     const today = new Date();
-    const date_today = today.getFullYear() + '-' + (today.getMonth() + 1)
-                 + '-' + today.getDate();
+    const date_today = today.toISOString().slice(0, 10); // YYYY-MM-DD
     // getMonth() starts with 0 for January
 
     const [tasks, setTasks] = useState([]);
@@ -48,4 +50,4 @@ const Tasks = () => {
     )
 }
 
-export default Tasks
+export default Tasks;

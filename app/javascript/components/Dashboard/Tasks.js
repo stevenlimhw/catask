@@ -43,7 +43,7 @@ const Tasks = () => {
                                        (dayjs(deadline).isoWeek() === dayjs().isoWeek());
                             }) 
                             .map(task => {
-                                const { id, deadline, day, title, description, isCompleted, tag } = task.attributes
+                                const { id, deadline, day, title, description, isCompleted, tag } = task.attributes;
                                 return <Link to={`/tasks/${id}`}> 
                                     <div key={id} className="dashboard-task">
                                         {/* <div className="checkbox">[Checkbox here]</div> */}

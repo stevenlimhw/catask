@@ -14,7 +14,7 @@ const QuickForm = (props) => {
                         placeholder="task title"
                         className="title-input"
                         >
-                    </input>
+                    </input> 
                     <input 
                         type="date"
                         name="deadline"

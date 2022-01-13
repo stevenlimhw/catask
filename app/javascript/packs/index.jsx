@@ -1,7 +1,3 @@
-// Run this example by adding <%= javascript_pack_tag 'hello_react' %> to the head of your layout file,
-// like app/views/layouts/application.html.erb. All it does is render <div>Hello React</div> at the bottom
-// of the page.
-
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
@@ -13,7 +9,8 @@ import Today from '../components/Day/Today'
 import UpdateTask from '../components/Task/UpdateTask'
 import AllTasks from '../components/AllTasks/AllTasks'
 import AddTask from '../components/AddTask/AddTask'
-
+import Register from '../components/auth/Registration'
+import Login from '../components/auth/Login'
 
 document.addEventListener('DOMContentLoaded', () => {
   ReactDOM.render(
@@ -27,6 +24,8 @@ document.addEventListener('DOMContentLoaded', () => {
             </Route>
             <Route path="today" element={<Today />} />
             <Route path="addtaskadvanced" element={<AddTask isQuickTask={false} />} />
+            <Route path="register" element={<Register />} />
+            <Route path="login" element={<Login />} />
             <Route path="*" element={<h1>Not Found</h1>} />
           </Route>
         </Routes>

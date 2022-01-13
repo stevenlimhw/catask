@@ -1,13 +1,23 @@
-import React, { Fragment, useState, useEffect } from 'react'
+import React, { Fragment, useState, useEffect, useContext } from 'react'
 import Form from './Form'
 import QuickForm from './QuickForm'
 import axios from 'axios'
+import { UserContext } from '../App'
 
 
 
 const AddTask = (props) => {
-
-    const [task, setTask] = useState({title: "", description: "", deadline: "", tag: ""});
+    
+    const { userLog } = useContext(UserContext);
+    const initialState = {
+        title: "",
+        description: "",
+        deadline: "",
+        tag: "",
+        isCompleted: false,
+        user_id: ""
+    };
+    const [task, setTask] = useState(initialState); //TODO
 
     // modify text in form
     const handleChange = (e) => {
@@ -17,22 +27,21 @@ const AddTask = (props) => {
     }
 
     // create task
-
     const handleSubmit = (e) => {
         e.preventDefault();
         const csrfToken = document.querySelector('[name=csrf-token]').content;
         axios.defaults.headers.common['X-CSRF-TOKEN'] = csrfToken;
 
-        axios.post('api/v1/tasks', task)
+        const user_id = userLog.user.id;
+        axios.post('/api/v1/tasks', {...task, user_id})
         .then(resp => {
-            setTask({title: "", description: "", deadline: "", tag: ""});
-            window.location.reload(); // change will immediately appear
-            // TODO: make a certain notice that task has been added
+            setTask(initialState);
+            window.location.reload();
+            // alert("Task successfully saved.");
         })
         .catch(error => console.log(error));
 
     }
-
 
     return props.isQuickForm 
     ? (

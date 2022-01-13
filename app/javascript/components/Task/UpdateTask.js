@@ -5,7 +5,7 @@ import axios from 'axios'
 
 const UpdateTask = () => {
     const id = useParams().id;
-    const [ newTask, setNewTask ] = useState({title: "", description: "", deadline: "", tag: ""});
+    const [ newTask, setNewTask ] = useState({title: "", description: "", deadline: "", tag: "", day: ""});
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -15,7 +15,7 @@ const UpdateTask = () => {
         })
         .catch(err => console.log(err))
     }, []);
-
+    console.log(newTask)
     const handleSubmit = (e) => {
         e.preventDefault();
         const csrfToken = document.querySelector('[name=csrf-token]').content;
@@ -32,7 +32,8 @@ const UpdateTask = () => {
     const handleChange = (e) => {
         const name = e.target.name;
         const value = e.target.value;
-        setNewTask({...newTask, [name]: value});
+        console.log(value)
+        setNewTask({...newTask, [name]: value, day: 0});
     }
 
     const handleDiscardChanges = () => {

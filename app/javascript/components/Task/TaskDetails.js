@@ -29,13 +29,14 @@ const TaskDetails = () => {
         .catch(err => console.log(err));
     }
 
-    const { title, description, deadline, tag } = task;
+    const { title, description, deadline, tag, day } = task;
     return (
         <div>
             <h1>{title}</h1>
             <h4>{description}</h4> 
             <h4>{deadline}</h4>
             <h4>{tag}</h4>
+            <h4>{day}</h4>
             <div className="taskdetails-wrapper">
                 <Link to={`/tasks/${id}/edit`}><div className="btn">Edit Task</div></Link>
                 <button className="btn" onClick={deleteTask}>Delete Task</button>

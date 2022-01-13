@@ -1,11 +1,16 @@
 module Api 
     module V1 
         class TasksController < ApplicationController
+            include CurrentUserConcern
 
             def index
-                tasks = Task.all
-
-                render json: TaskSerializer.new(tasks).serialized_json
+                # tasks = Task.where(user_id: params[:user_id]) # TODO
+                if @current_user
+                    tasks = Task.where(user_id: @current_user.id)
+                    render json: TaskSerializer.new(tasks).serialized_json
+                else
+                    head :ok
+                end
             end
 
             def show
@@ -47,7 +52,7 @@ module Api
             private
 
             def task_params
-                params.require(:task).permit(:deadline, :title, :description, :isCompleted, :tag)
+                params.require(:task).permit(:deadline, :title, :description, :isCompleted, :tag, :user_id)
             end
         end
     end

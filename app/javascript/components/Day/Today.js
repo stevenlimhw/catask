@@ -4,7 +4,7 @@ import AddTask from '../AddTask/AddTask'
 
 const Today = () => {
     return (
-        <Fragment>
+        <div>
             <h1><div>Tasks for Today</div></h1>
             <div>
                 <Tasks />
@@ -12,7 +12,7 @@ const Today = () => {
             <div>
                 <AddTask isQuickForm={true} />
             </div>
-        </Fragment>
+        </div>
     )
 }
 
