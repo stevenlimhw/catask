@@ -20,14 +20,14 @@ const Tasks = () => {
             setIsLoaded(true);
         })
         .catch(err => console.log(err));
-    }, []);
+    }, []); 
 
-    return (
+    return ( 
         <div>
         {
             isLoaded &&
             <div className="today-wrapper">
-                {
+                { 
                     tasks.filter((task) => {
                         const { deadline } = task.attributes;
                         return deadline === date_today;

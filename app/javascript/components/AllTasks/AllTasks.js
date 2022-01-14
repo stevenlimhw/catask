@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { DropDownMenu } from "../Sorting/DropDownMenu";
 
 const AllTasks = () => {
 
@@ -19,6 +20,7 @@ const AllTasks = () => {
         <div className="alltasks-wrapper">
             <h1>All Tasks</h1>
             {/* <Sort tasks={tasks}/> */}
+            {/* <DropDownMenu /> */}
             <br />
             <div className="tasks-container">
             {

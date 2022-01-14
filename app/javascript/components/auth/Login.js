@@ -46,21 +46,23 @@ const Login = () => {
 
     return (
         <div>
-            <h1>Login Status: {userLog.loggedInStatus}</h1>
-            <form onSubmit={handleSubmit}>
+            <h1>Log in</h1>
+            <form onSubmit={handleSubmit} className="taskdetails-wrapper">
                 <input
+                    className="taskdetails-input"
                     type="email"
                     name="email"
                     value={user.email}
-                    placeholder="email here"
+                    placeholder="email address"
                     onChange={handleChange} />
                 <input
+                    className="taskdetails-input"
                     type="password"
                     name="password"
                     value={user.password}
-                    placeholder="password here"
+                    placeholder="password"
                     onChange={handleChange} />
-                <button type="submit">Log In</button>
+                <button type="submit" className="btn">Log in</button>
             </form>
         </div>
     );

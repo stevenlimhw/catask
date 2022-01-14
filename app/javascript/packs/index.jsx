@@ -11,12 +11,14 @@ import AllTasks from '../components/AllTasks/AllTasks'
 import AddTask from '../components/AddTask/AddTask'
 import Register from '../components/auth/Registration'
 import Login from '../components/auth/Login'
+import Home from '../components/AppRender/Home'
 
 document.addEventListener('DOMContentLoaded', () => {
   ReactDOM.render(
     <Router>
         <Routes>
           <Route path="/" element={<App />}>
+            <Route path="/" element={<Home />} />
             <Route exact path="tasks" element={<AllTasks />} />
             <Route path="dashboard" element={<Dashboard />} />
             <Route path="tasks/:id" element={<TaskDetails />}>

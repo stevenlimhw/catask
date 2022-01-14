@@ -41,9 +41,9 @@ const TaskDetails = () => {
                 <Link to={`/tasks/${id}/edit`}><div className="btn">Edit Task</div></Link>
                 <button className="btn" onClick={deleteTask}>Delete Task</button>
                 <Outlet />
-            </div>
+            </div> 
         </div>
-    )
+    ) 
 }
 
 export default TaskDetails

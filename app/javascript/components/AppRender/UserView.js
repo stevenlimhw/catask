@@ -6,7 +6,7 @@ import { UserContext } from '../App'
 const UserView = (props) => {
     const { handleLogin, handleLogout, userLog } = props;
     return ( <UserContext.Provider value={{ userLog, handleLogin }}>
-    <div className="app-wrapper">
+    <div className="">
         <div className="header">
             <nav>
                 <div className="navigation">
@@ -16,7 +16,7 @@ const UserView = (props) => {
                     <Link to='tasks' className="navigation-link">Tasks</Link>
                 </div>
             </nav>
-            <button className='navigation-link' onClick={handleLogout}>Log Out</button>
+            <button className='navigation-link' onClick={handleLogout}>Log out</button>
         </div>
         <Outlet /> 
     </div>  

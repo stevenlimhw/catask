@@ -7,18 +7,18 @@ const NoUserView = (props) => {
     const { handleLogin, handleLogout, userLog } = props;
 
     return ( <UserContext.Provider value={{ userLog, handleLogin }}>
-    <div className="app-wrapper">
         <div className="header">
             <nav>
                 <div className="navigation">
                     <Link to='/' className="navigation-link">Home</Link>
                 </div>
             </nav>
-            <Link to='register' className="navigation-link">Sign Up</Link>
-            <Link to='login' className="navigation-link">Log In</Link>
-        </div>
-        <Outlet /> 
-    </div>  
+            <div className="nav-btn-wrapper">
+                <Link to='register' className="navigation-link">Sign up</Link>
+                <Link to='login' className="navigation-link">Log in</Link>
+            </div>
+        </div> 
+        <Outlet />
     </UserContext.Provider> );
 }
 

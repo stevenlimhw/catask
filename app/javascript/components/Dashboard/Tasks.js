@@ -35,9 +35,9 @@ const Tasks = () => {
                 { 
                     return <div className="dashboard-card"> 
                         <div className="dashboard-day-title">{day_names[day_number]}</div>
-                        {
-                            tasks
-                            .filter(task => {
+                        { 
+                            tasks 
+                            .filter(task => { 
                                 const { day, deadline } = task.attributes
                                 return (day === day_number) && 
                                        (dayjs(deadline).isoWeek() === dayjs().isoWeek());

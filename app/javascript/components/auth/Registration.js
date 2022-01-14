@@ -48,27 +48,30 @@ const Registration = () => {
 
     return (
         <div>
-            <h1>Login Status: {userLog.loggedInStatus}</h1>
-            <form onSubmit={handleSubmit}>
+            <h1>Sign up</h1>
+            <form onSubmit={handleSubmit} className="taskdetails-wrapper">
                 <input
+                    className="taskdetails-input"
                     type="email"
                     name="email"
                     value={user.email}
-                    placeholder="email here"
-                    onChange={handleChange} />
+                    placeholder="email address"
+                    onChange={handleChange} /> 
                 <input
+                    className="taskdetails-input"
                     type="password"
                     name="password"
                     value={user.password}
-                    placeholder="password here"
+                    placeholder="password"
                     onChange={handleChange} />
                 <input
+                    className="taskdetails-input"
                     type="password"
                     name="password_confirmation"
                     value={user.password_confirmation}
                     placeholder="confirm password"
                     onChange={handleChange} />
-                <button type="submit">Sign Up</button>
+                <button type="submit" className="btn">Sign up</button>
             </form>
         </div>
     );
