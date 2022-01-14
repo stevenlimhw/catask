@@ -280,6 +280,17 @@ h4 {
     rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
 }
 
+.alltasks-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.alltasks-wrapper-container {
+  display: flex;
+  justify-content: flex-end;
+}
+
 /* taskdetails */
 
 .taskdetails-wrapper {
@@ -311,4 +322,26 @@ h4 {
   margin-top: 1rem;
   display: flex;
   flex-direction: row;
+}
+
+.btn-2 {
+  text-decoration: none;
+  font-size: 1rem;
+  color: black;
+  border: none;
+  box-sizing: border-box;
+  margin: 2rem 2rem 2rem 0;
+  padding: 0.5rem 2rem;
+  width: fit-content;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  transition: all 0.3s;
+}
+
+.btn-2:hover {
+  outline: none;
+  background-color: black;
+  color: white;
+  box-shadow: none;
 }

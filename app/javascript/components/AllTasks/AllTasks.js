@@ -17,11 +17,14 @@ const AllTasks = () => {
     }, []);
 
     return (
-        <div className="alltasks-wrapper">
-            <h1>All Tasks</h1>
-            {/* <Sort tasks={tasks}/> */}
-            {/* <DropDownMenu /> */}
-            <br />
+        <div>
+            <div className="alltasks-wrapper">
+                <h1>All Tasks</h1>
+                <div className="alltasks-wrapper-container">
+                    <button className="btn-2">Sort</button>
+                    <button className="btn-2">Search</button>
+                </div>
+            </div>
             <div className="tasks-container">
             {
                 tasks.map((task) => {
