@@ -16,7 +16,6 @@ const Dashboard = () => {
             <Outlet />
         </div>
         <div>
-            {/* one card for each day */}
             <Tasks />
         </div>
     </Fragment>

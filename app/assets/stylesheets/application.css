@@ -9,6 +9,7 @@
 body {
   height: 100%;
   /* background-color: #e9e9e9; */
+  background-color: #d3d3d3;
 }
 
 h1,
@@ -188,6 +189,7 @@ h4 {
   width: 3.5rem;
   border-radius: 100%;
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  transition: all 0.7s;
 }
 
 .add-btn:hover {
@@ -213,10 +215,12 @@ h4 {
 .fields-btn {
   text-decoration: none;
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  background-color: white;
   color: black;
   font-size: 1rem;
   border-radius: 10px;
   padding: 1rem;
+  transition: all 0.7s;
 }
 
 .fields-btn:hover {
@@ -336,7 +340,7 @@ h4 {
   background-color: white;
   border-radius: 10px;
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-  transition: all 0.3s;
+  transition: all 0.7s;
 }
 
 .btn-2:hover {
@@ -344,4 +348,8 @@ h4 {
   background-color: black;
   color: white;
   box-shadow: none;
+}
+
+.btn-2:focus {
+  outline: none;
 }

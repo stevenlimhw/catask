@@ -9,13 +9,18 @@ const UpdateTask = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        axios.get(`/api/v1/tasks/${id}`)
+        const source = axios.CancelToken.source();
+        axios.get(`/api/v1/tasks/${id}`, {
+            cancelToken: source.token
+        })
         .then(resp => {
             setNewTask(resp.data.data.attributes);
         })
         .catch(err => console.log(err))
+        return () => {
+            source.cancel();
+        }
     }, []);
-    console.log(newTask)
     const handleSubmit = (e) => {
         e.preventDefault();
         const csrfToken = document.querySelector('[name=csrf-token]').content;
@@ -32,7 +37,6 @@ const UpdateTask = () => {
     const handleChange = (e) => {
         const name = e.target.name;
         const value = e.target.value;
-        console.log(value)
         setNewTask({...newTask, [name]: value, day: 0});
     }
 

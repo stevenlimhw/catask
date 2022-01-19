@@ -14,12 +14,18 @@ const Tasks = () => {
     const [isLoaded, setIsLoaded] = useState(false);
 
     useEffect(() => {
-        axios.get('/api/v1/tasks')
+        const source = axios.CancelToken.source();
+        axios.get('/api/v1/tasks', {
+            cancelToken: source.token
+        })
         .then(resp => {
             setTasks(resp.data.data);
             setIsLoaded(true);
         })
         .catch(err => console.log(err));
+        return () => {
+            source.cancel();
+        }
     }, []); 
 
     return ( 
@@ -34,8 +40,8 @@ const Tasks = () => {
                     })
                     .map((task) => {
                         const { id, deadline, day, title, description, isCompleted, tag } = task.attributes;
-                        return <Link to={`/tasks/${id}`}>
-                            <div key={id} className="today-task">
+                        return <Link to={`/tasks/${id}`} key={id}>
+                            <div className="alltasks-task">
                                 <div className="task-title">{title}</div>
                                 <div className="task-description">{description}</div>
                                 <div>Due: {deadline}</div>
