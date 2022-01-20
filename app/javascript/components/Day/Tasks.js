@@ -28,6 +28,17 @@ const Tasks = () => {
         }
     }, []); 
 
+    const handleChecked = (task) => {
+        const { id, isCompleted } = task.attributes;
+
+        const csrfToken = document.querySelector('[name=csrf-token]').content;
+        axios.defaults.headers.common['X-CSRF-TOKEN'] = csrfToken;
+
+        axios.put(`/api/v1/tasks/${id}`, {...task, isCompleted: !isCompleted})
+        .then(resp => window.location.reload())
+        .catch(err => console.log(err));
+    }
+
     return ( 
         <div>
         {
@@ -40,14 +51,19 @@ const Tasks = () => {
                     })
                     .map((task) => {
                         const { id, deadline, day, title, description, isCompleted, tag } = task.attributes;
-                        return <Link to={`/tasks/${id}`} key={id}>
-                            <div className="alltasks-task">
-                                <div className="task-title">{title}</div>
+                        return <div className="alltasks-task" key={id}>
+                            <input 
+                                type="checkbox"
+                                className="checkbox"
+                                checked={isCompleted}
+                                onChange={() => handleChecked(task)}
+                                />
+                            <Link to={`/tasks/${id}`}>
+                                <div className={isCompleted ? "task-title-done" : "task-title"}>{title}</div>
                                 <div className="task-description">{description}</div>
-                                <div>Due: {deadline}</div>
                                 <div className="tag">{tag}</div>
-                            </div>
-                        </Link>
+                            </Link>
+                        </div>
                     })
                 }
             </div> 
@@ -56,4 +72,4 @@ const Tasks = () => {
     )
 }
 
-export default Tasks;
+export default Tasks; 

@@ -28,6 +28,17 @@ const Tasks = () => {
         }
     }, []);
 
+    const handleChecked = (task) => {
+        const { id, isCompleted } = task.attributes;
+
+        const csrfToken = document.querySelector('[name=csrf-token]').content;
+        axios.defaults.headers.common['X-CSRF-TOKEN'] = csrfToken;
+
+        axios.put(`/api/v1/tasks/${id}`, {...task, isCompleted: !isCompleted})
+        .then(resp => window.location.reload())
+        .catch(err => console.log(err));
+    }
+
     const day_numbers = [0, 1, 2, 3, 4, 5, 6, 7]
     const day_names = ["Inbox", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
     
@@ -50,15 +61,22 @@ const Tasks = () => {
                             }) 
                             .map(task => {
                                 const { id, deadline, day, title, description, isCompleted, tag } = task.attributes;
-                                return <Link to={`/tasks/${id}`} key={day_number + id}> 
-                                    <div className="dashboard-task">
-                                        {/* <div className="checkbox">[Checkbox here]</div> */}
-                                        {/* <div>{dayjs(deadline).format("DD/MM/YYYY")}</div> */}
-                                        {/* <div className="tag">{tag}</div> */}
-                                        <div className="task-title">{title}</div>
-                                    </div> 
-                                </Link> 
-                            }) 
+                                return <div className="dashboard-task" key={day_number + id}>
+                                    <input 
+                                        type="checkbox"
+                                        className="checkbox"
+                                        checked={isCompleted}
+                                        onChange={() => handleChecked(task)}
+                                        />
+                                    <Link to={`/tasks/${id}`}>
+                                        <div className="task-title-wrapper">
+                                            <div className={isCompleted ? "task-title-done" : "task-title"}>{title}</div>
+                                            <div className="task-description">Due: {dayjs(deadline).format("DD/MM/YYYY")}</div>
+                                            <div className="tag">{tag}</div>
+                                        </div> 
+                                    </Link>
+                                </div> 
+                            })
                         }
                     </div>    
                 })

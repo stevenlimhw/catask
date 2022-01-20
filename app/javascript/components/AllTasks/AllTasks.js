@@ -62,7 +62,6 @@ const AllTasks = () => {
                         <option value="deadline">deadline</option>
                         <option value="tag">tag</option>
                     </select>
-                       {/* <button className="btn-2">search</button> */}
                     <input
                         placeholder="search task title"
                         className="search-input"
@@ -75,18 +74,17 @@ const AllTasks = () => {
                 tasks
                 .filter(filterSearch)
                 .map((task) => {
-                    const { id, title, description, deadline, tag } = task.attributes;
+                    const { id, title, description, deadline, tag, isCompleted } = task.attributes;
                     return ( 
                         <Link to={`/tasks/${id}`} key={id}>
-                            <div className="alltasks-task">
-                                <div className="task-title">{title}</div>
+                            <div className="alltasks-task column-order">
+                                <div className={isCompleted ? "task-title-done" : "task-title"}>{title}</div>
                                 <div className="task-description">{description}</div>
-                                <div>{deadline}</div>
-                                <div>{tag}</div>
-                                <br />
-                            </div> 
+                                <div className="task-description">{deadline}</div>
+                                <div className="tag">{tag}</div>
+                            </div>
                         </Link> 
-                    ) 
+                    )
                 }) 
             } 
             </div>

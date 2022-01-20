@@ -5,7 +5,7 @@ import { Outlet, Link, useNavigate } from 'react-router-dom'
 import UpdateTask from './UpdateTask'
 
 const TaskDetails = () => {
-    const [task, setTask] = useState({title: "", description: "", deadline: "", tag: ""});
+    const [task, setTask] = useState({title: "", description: "", deadline: "", tag: "", isCompleted: false});
     const id = useParams().id;
     const navigate = useNavigate();
 
@@ -33,18 +33,28 @@ const TaskDetails = () => {
         .catch(err => console.log(err));
     }
 
-    const { title, description, deadline, tag, day } = task;
+    const handleChecked = () => {
+        const csrfToken = document.querySelector('[name=csrf-token]').content;
+        axios.defaults.headers.common['X-CSRF-TOKEN'] = csrfToken;
+
+        axios.put(`/api/v1/tasks/${id}`, {...task, isCompleted: !isCompleted})
+        .then(resp => window.location.reload())
+        .catch(err => console.log(err));
+    }
+
+    const { title, description, deadline, tag, day, isCompleted } = task;
     return (
         <div>
             <h1>{title}</h1>
             <input 
                 type="checkbox" 
-                className="check-box"
-                 />
+                className="checkbox"
+                checked={isCompleted}
+                onChange={handleChecked}
+                 /> 
             <h4>{description}</h4> 
-            <h4>{deadline}</h4>
+            <h4>Due: {deadline}</h4>
             <h4>{tag}</h4>
-            <h4>{day}</h4>
             <div className="taskdetails-wrapper">
                 <Link to={`/tasks/${id}/edit`}><div className="btn">Edit Task</div></Link>
                 <button className="btn" onClick={deleteTask}>Delete Task</button>
