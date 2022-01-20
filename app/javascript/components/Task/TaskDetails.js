@@ -11,11 +11,15 @@ const TaskDetails = () => {
 
     // fetch data from api (just the one with matching id)
     useEffect(() => {
-        axios.get(`/api/v1/tasks/${id}`) // invokes show method in controller
+        const source = axios.CancelToken.source();
+        axios.get(`/api/v1/tasks/${id}`, {
+            cancelToken: source.token
+        })
         .then(resp => {
             setTask(resp.data.data.attributes);
         })
-        .catch(err => console.log(err))
+        .catch(err => console.log(err));
+        return () => source.cancel();
     }, []);
     
     const deleteTask = () => {
@@ -33,6 +37,10 @@ const TaskDetails = () => {
     return (
         <div>
             <h1>{title}</h1>
+            <input 
+                type="checkbox" 
+                className="check-box"
+                 />
             <h4>{description}</h4> 
             <h4>{deadline}</h4>
             <h4>{tag}</h4>
@@ -41,9 +49,9 @@ const TaskDetails = () => {
                 <Link to={`/tasks/${id}/edit`}><div className="btn">Edit Task</div></Link>
                 <button className="btn" onClick={deleteTask}>Delete Task</button>
                 <Outlet />
-            </div> 
+            </div>
         </div>
     ) 
-}
-
+} 
+ 
 export default TaskDetails

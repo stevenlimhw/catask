@@ -1,12 +1,12 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 
 const AllTasks = () => {
 
     const [tasks, setTasks] = useState([]);
-    // const [sortedTasks, setSortedTasks] = useState([]);
     const [sortBy, setSortBy] = useState("");
+    const [searchParams, setSearchParams] = useSearchParams();
 
     const handleSort = (type) => {
         const types = {title: "title", deadline: "deadline", tag: "tag"};
@@ -14,8 +14,22 @@ const AllTasks = () => {
         const sortedArr = [...tasks].sort(
             (a, b) => a.attributes[sortType].localeCompare(b.attributes[sortType])
         );
-        // setSortedTasks(sortedArr);
         setTasks(sortedArr);
+    }
+
+    const handleSearch = (e) => {
+        const filter = e.target.value;
+        if (filter) {
+            setSearchParams({ filter });
+        } else {
+            setSearchParams({});
+        }
+    }
+
+    const filterSearch = (task) => {
+        const filter = searchParams.get("filter");
+        const title = task.attributes.title.toLowerCase();
+        return (!filter) ? true : title.startsWith(filter.toLowerCase());
     }
 
     useEffect(() => {
@@ -48,12 +62,19 @@ const AllTasks = () => {
                         <option value="deadline">deadline</option>
                         <option value="tag">tag</option>
                     </select>
-                    <button className="btn-2">search</button>
+                       {/* <button className="btn-2">search</button> */}
+                    <input
+                        placeholder="search task title"
+                        className="search-input"
+                        value={searchParams.get("filter") || ""}
+                        onChange={handleSearch} />
                 </div>
             </div>
             <div className="tasks-container">
             {
-                tasks.map((task) => {
+                tasks
+                .filter(filterSearch)
+                .map((task) => {
                     const { id, title, description, deadline, tag } = task.attributes;
                     return ( 
                         <Link to={`/tasks/${id}`} key={id}>

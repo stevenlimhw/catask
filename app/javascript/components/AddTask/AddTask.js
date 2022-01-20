@@ -17,7 +17,7 @@ const AddTask = (props) => {
         isCompleted: false,
         user_id: ""
     };
-    const [task, setTask] = useState(initialState); //TODO
+    const [task, setTask] = useState(initialState);
 
     // modify text in form
     const handleChange = (e) => {
@@ -37,7 +37,6 @@ const AddTask = (props) => {
         .then(resp => {
             setTask(initialState);
             window.location.reload();
-            // alert("Task successfully saved.");
         })
         .catch(error => console.log(error));
 

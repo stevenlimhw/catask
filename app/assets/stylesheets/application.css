@@ -127,6 +127,25 @@ h4 {
 .navigation-link:hover {
   color: white;
   background-color: black;
+  border-bottom: 5px solid #ffd700;
+}
+
+.active-link {
+  display: flex;
+  text-decoration: none;
+  background-color: white;
+  padding: 1rem;
+  font-weight: 700;
+  color: black;
+  box-sizing: border-box;
+  transition: all 0.5s;
+  border-bottom: 5px solid black;
+}
+
+.active-link:hover {
+  color: white;
+  background-color: black;
+  border-bottom: 5px solid #ffd700;
 }
 
 .nav-btn-wrapper {
@@ -213,6 +232,7 @@ h4 {
 }
 
 .fields-btn {
+  box-sizing: border-box;
   text-decoration: none;
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
   background-color: white;
@@ -224,11 +244,13 @@ h4 {
 }
 
 .fields-btn:hover {
-  /* border: 1px solid black; */
+  box-sizing: border-box;
   background-color: black;
   color: white;
   box-shadow: none;
-  transition: 0.5s;
+  text-decoration: underline;
+  text-decoration-color: #ffd700;
+  text-decoration-thickness: 5px;
 }
 
 /* today */
@@ -352,4 +374,40 @@ h4 {
 
 .btn-2:focus {
   outline: none;
+}
+
+.search-input {
+  font-size: 1rem;
+  margin: 2rem 2rem 2rem 0;
+  padding: 0.5rem 2rem;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  border-radius: 50px;
+  border: none;
+}
+
+.search-input:focus {
+  outline: 3.5px solid black;
+  /* border: 1px solid #f0f0f0; */
+  /* box-shadow: none; */
+}
+
+@media screen and (max-width: 750px) {
+  .alltasks-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .alltasks-wrapper-container {
+    display: flex;
+    justify-content: flex-start;
+    margin-left: 2rem;
+  }
+}
+
+.check-box {
+  /* -webkit-appearance: none; */
+  margin-left: 2rem;
+  margin-top: 1rem;
+  width: 1.25rem;
+  height: 1.25rem;
 }
