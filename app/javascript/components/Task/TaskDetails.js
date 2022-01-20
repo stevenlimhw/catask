@@ -44,24 +44,29 @@ const TaskDetails = () => {
 
     const { title, description, deadline, tag, day, isCompleted } = task;
     return (
-        <div>
+        <div className="taskdetails-background">
             <h1>{title}</h1>
-            <input 
-                type="checkbox" 
-                className="checkbox"
-                checked={isCompleted}
-                onChange={handleChecked}
-                 /> 
-            <h4>{description}</h4> 
-            <h4>Due: {deadline}</h4>
-            <h4>{tag}</h4>
-            <div className="taskdetails-wrapper">
-                <Link to={`/tasks/${id}/edit`}><div className="btn">Edit Task</div></Link>
-                <button className="btn" onClick={deleteTask}>Delete Task</button>
-                <Outlet />
+            <div>
+                <div className="tag taskdetails-left-indent">{tag}</div>
+                <input 
+                    type="checkbox" 
+                    className="checkbox"
+                    checked={isCompleted}
+                    onChange={handleChecked}
+                    /> 
+            </div>
+            <div className="taskdetails-content-wrapper">
+                <h4>Description: </h4>
+                <div className="task-description taskdetails-left-indent">{description}</div> 
+                <h4>Due: {deadline}</h4>
+                <div className="taskdetails-wrapper">
+                    <Link to={`/tasks/${id}/edit`}><div className="btn">Edit Task</div></Link>
+                    <button className="btn" onClick={deleteTask}>Delete Task</button>
+                    <Outlet /> 
+                </div>
             </div>
         </div>
     ) 
-} 
+}
  
 export default TaskDetails

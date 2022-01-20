@@ -47,7 +47,7 @@ const Registration = () => {
     }
 
     return (
-        <div>
+        <div className="taskdetails-background">
             <h1>Sign up</h1>
             <form onSubmit={handleSubmit} className="taskdetails-wrapper">
                 <input

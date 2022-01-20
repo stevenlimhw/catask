@@ -45,7 +45,7 @@ const Login = () => {
     }
 
     return (
-        <div>
+        <div className="taskdetails-background">
             <h1>Log in</h1>
             <form onSubmit={handleSubmit} className="taskdetails-wrapper">
                 <input
