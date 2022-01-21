@@ -4,7 +4,6 @@ module Api
             include CurrentUserConcern
 
             def index
-                # tasks = Task.where(user_id: params[:user_id]) # TODO
                 if @current_user
                     tasks = Task.where(user_id: @current_user.id)
                     render json: TaskSerializer.new(tasks).serialized_json
@@ -52,7 +51,7 @@ module Api
             private
 
             def task_params
-                params.require(:task).permit(:deadline, :title, :description, :isCompleted, :tag, :user_id)
+                params.require(:task).permit(:deadline, :title, :description, :isCompleted, :tag, :user_id, :day)
             end
         end
     end

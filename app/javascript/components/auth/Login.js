@@ -14,7 +14,7 @@ const Login = () => {
             password: "",
             registrationErrors: ""
         }
-    )
+    );
 
     const handleChange = (e) => {
         const name = e.target.name;
@@ -32,7 +32,7 @@ const Login = () => {
         const csrfToken = document.querySelector('[name=csrf-token]').content;
         axios.defaults.headers.common['X-CSRF-TOKEN'] = csrfToken;
 
-        axios.post('/sessions', {user: user}) // { withCredentials: true}
+        axios.post('/sessions', {user: user})
         .then(resp => {
             setUser({
                 email: "",

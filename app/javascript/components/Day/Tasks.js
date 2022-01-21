@@ -1,8 +1,7 @@
-import React, { useState, useEffect, useContext } from 'react'
+import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
-// import '../../../assets/stylesheets/application.css'
-import { UserContext } from '../App'
+import '../../../assets/stylesheets/application.css'
 
 const Tasks = () => {
 
@@ -11,7 +10,6 @@ const Tasks = () => {
     // getMonth() starts with 0 for January
 
     const [tasks, setTasks] = useState([]);
-    const [isLoaded, setIsLoaded] = useState(false);
 
     useEffect(() => {
         const source = axios.CancelToken.source();
@@ -20,7 +18,6 @@ const Tasks = () => {
         })
         .then(resp => {
             setTasks(resp.data.data);
-            setIsLoaded(true);
         })
         .catch(err => console.log(err));
         return () => {
@@ -39,37 +36,33 @@ const Tasks = () => {
         .catch(err => console.log(err));
     }
 
-    return ( 
-        <div>
-        {
-            isLoaded &&
-            <div className="today-wrapper">
-                { 
-                    tasks.filter((task) => {
-                        const { deadline } = task.attributes;
-                        return deadline === date_today;
-                    })
-                    .map((task) => {
-                        const { id, deadline, day, title, description, isCompleted, tag } = task.attributes;
-                        return <div className="alltasks-task" key={id}>
-                            <input 
-                                type="checkbox"
-                                className="checkbox"
-                                checked={isCompleted}
-                                onChange={() => handleChecked(task)}
-                                />
-                            <Link to={`/tasks/${id}`}>
-                                <div className={isCompleted ? "task-title-done" : "task-title"}>{title}</div>
-                                <div className="task-description">{description}</div>
-                                <div className="tag">{tag}</div>
-                            </Link>
-                        </div>
-                    })
-                }
-            </div> 
-        }
-        </div>
-    )
+    return (
+        <div className="today-wrapper">
+            { 
+                tasks
+                .filter((task) => {
+                    const { deadline } = task.attributes;
+                    return deadline === date_today;
+                }) 
+                .map((task) => {
+                    const { id, title, description, isCompleted, tag } = task.attributes;
+                    return <div className="alltasks-task" key={id}>
+                        <input 
+                            type="checkbox"
+                            className="checkbox"
+                            checked={isCompleted}
+                            onChange={() => handleChecked(task)}
+                            />
+                        <Link to={`/tasks/${id}`}>
+                            <div className={isCompleted ? "task-title-done" : "task-title"}>{title}</div>
+                            <div className="task-description">{description}</div>
+                            <div className="tag">{tag}</div>
+                        </Link>
+                    </div>
+                })
+            }
+        </div> 
+    );
 }
 
 export default Tasks; 

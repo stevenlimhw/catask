@@ -1,6 +1,6 @@
 import axios from 'axios'
-import React, { useState, useEffect, Fragment } from 'react'
-import { Link, Navigate } from 'react-router-dom'
+import React, { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 import '../../../assets/stylesheets/application.css'
 
 const Tasks = () => {
@@ -11,7 +11,6 @@ const Tasks = () => {
     dayjs.extend(isoWeek);
 
     const [tasks, setTasks] = useState([]);
-    const [isLoaded, setIsLoaded] = useState(false);
 
     useEffect(() => {
         const source = axios.CancelToken.source();
@@ -20,7 +19,6 @@ const Tasks = () => {
         })
         .then(resp => {
             setTasks(resp.data.data);
-            setIsLoaded(true);
         })
         .catch(resp => console.log(resp));
         return () => {
@@ -42,25 +40,24 @@ const Tasks = () => {
     const day_numbers = [0, 1, 2, 3, 4, 5, 6, 7]
     const day_names = ["Inbox", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
     
-    return <div>
+    return (
+        <div className="dashboard-wrapper">
         {
-            isLoaded &&
-            <div className="dashboard-wrapper">
-            {
+            // map over every single 'day box'
             day_numbers 
-            .map(day_number =>
-                { 
+            .map(day_number => { 
                     return <div className="dashboard-card" key={day_number}> 
                         <div className="dashboard-day-title">{day_names[day_number]}</div>
                         { 
+                            // map over every single task within each 'day box'
                             tasks 
                             .filter(task => { 
                                 const { day, deadline } = task.attributes
                                 return (day === day_number) && 
-                                       (dayjs(deadline).isoWeek() === dayjs().isoWeek());
+                                        (dayjs(deadline).isoWeek() === dayjs().isoWeek());
                             }) 
                             .map(task => {
-                                const { id, deadline, day, title, description, isCompleted, tag } = task.attributes;
+                                const { id, deadline, title, isCompleted, tag } = task.attributes;
                                 return <div className="dashboard-task" key={day_number + id}>
                                     <input 
                                         type="checkbox"
@@ -76,14 +73,10 @@ const Tasks = () => {
                                         </div> 
                                     </Link>
                                 </div> 
-                            })
-                        }
-                    </div>    
-                })
-            } 
-            </div>
-        }
-    </div>
+                            })}
+                        </div>    
+                    })} 
+        </div>);
 }
 
 export default Tasks

@@ -33,7 +33,7 @@ const Registration = () => {
         const csrfToken = document.querySelector('[name=csrf-token]').content;
         axios.defaults.headers.common['X-CSRF-TOKEN'] = csrfToken;
 
-        axios.post('/registrations', {user: user}) // { withCredentials: true}
+        axios.post('/registrations', {user: user})
         .then(resp => {
             setUser({
                 email: "",

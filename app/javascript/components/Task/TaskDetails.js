@@ -2,14 +2,12 @@ import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import axios from 'axios'
 import { Outlet, Link, useNavigate } from 'react-router-dom'
-import UpdateTask from './UpdateTask'
 
 const TaskDetails = () => {
     const [task, setTask] = useState({title: "", description: "", deadline: "", tag: "", isCompleted: false});
     const id = useParams().id;
     const navigate = useNavigate();
 
-    // fetch data from api (just the one with matching id)
     useEffect(() => {
         const source = axios.CancelToken.source();
         axios.get(`/api/v1/tasks/${id}`, {

@@ -12,7 +12,16 @@ const AllTasks = () => {
         const types = {title: "title", deadline: "deadline", tag: "tag"};
         const sortType = types[type];
         const sortedArr = [...tasks].sort(
-            (a, b) => a.attributes[sortType].localeCompare(b.attributes[sortType])
+            (a, b) => {
+                // prevent errors caused by null values
+                if (a.attributes[sortType] == null) {
+                    return 1;
+                } else if (b.attributes[sortType] == null) {
+                    return -1;
+                } else {
+                    return a.attributes[sortType].localeCompare(b.attributes[sortType]);
+                }
+            }
         );
         setTasks(sortedArr);
     }

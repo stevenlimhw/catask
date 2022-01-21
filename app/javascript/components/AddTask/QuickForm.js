@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link, Outlet } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const QuickForm = (props) => {
     const { handleChange, handleSubmit, task } = props;
@@ -26,7 +26,7 @@ const QuickForm = (props) => {
                             className="date-input"
                             > 
                         </input>
-                        <Link to="/addtaskadvanced" className="fields-btn">more fields</Link>
+                        <Link to="/addtaskadvanced" className="fields-btn">more</Link>
                     </div>
             </form> 
         </div>

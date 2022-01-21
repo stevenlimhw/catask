@@ -276,7 +276,7 @@ h4 {
   /* grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); */
   grid-template-columns: 1fr;
   gap: 1rem;
-  margin: 1rem;
+  margin: 1rem 2rem 1rem 1rem;
 }
 
 .today-task {
@@ -285,7 +285,7 @@ h4 {
   padding: 1rem;
   border-radius: 10px;
   border: 1.5px solid #f0f0f0;
-  margin: 0 1rem 0 1rem;
+  margin: 0 2rem 0 2rem;
   transition: all 0.3s;
 }
 
@@ -362,7 +362,7 @@ h4 {
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
-  margin: 2rem;
+  margin: 2rem 2rem 2rem 1rem;
   gap: 1rem;
 }
 
@@ -416,8 +416,9 @@ h4 {
 }
 
 .search-input {
+  max-height: 1rem;
   font-size: 1rem;
-  margin: 2rem 2rem 2rem 0;
+  margin: 2rem 2rem 1rem 0;
   padding: 0.5rem 2rem;
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
   border-radius: 50px;
@@ -426,19 +427,18 @@ h4 {
 
 .search-input:focus {
   outline: 3.5px solid black;
-  /* border: 1px solid #f0f0f0; */
-  /* box-shadow: none; */
 }
 
 @media screen and (max-width: 750px) {
   .alltasks-wrapper {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: flex-start;
   }
   .alltasks-wrapper-container {
     display: flex;
-    justify-content: flex-start;
+    justify-content: flex-end;
+    flex-direction: column;
     margin-left: 2rem;
   }
 }

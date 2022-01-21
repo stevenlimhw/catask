@@ -4,8 +4,12 @@ import { useNavigate, useParams } from 'react-router-dom'
 import axios from 'axios'
 
 const UpdateTask = () => {
+
+    // dayjs initialisation
+    // const dayjs = require('dayjs');
+
     const id = useParams().id;
-    const [ newTask, setNewTask ] = useState({title: "", description: "", deadline: "", tag: "", day: ""});
+    const [ newTask, setNewTask ] = useState({title: "", description: "", deadline: "", tag: ""});
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -21,6 +25,7 @@ const UpdateTask = () => {
             source.cancel();
         }
     }, []);
+    
     const handleSubmit = (e) => {
         e.preventDefault();
         const csrfToken = document.querySelector('[name=csrf-token]').content;
@@ -37,7 +42,7 @@ const UpdateTask = () => {
     const handleChange = (e) => {
         const name = e.target.name;
         const value = e.target.value;
-        setNewTask({...newTask, [name]: value, day: 0});
+        setNewTask({...newTask, [name]: value});
     }
 
     const handleDiscardChanges = () => {

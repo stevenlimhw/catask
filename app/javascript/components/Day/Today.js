@@ -1,11 +1,11 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import Tasks from './Tasks'
 import AddTask from '../AddTask/AddTask'
 
 const Today = () => {
     return (
         <div>
-            <h1><div>Tasks for Today</div></h1>
+            <h1>Tasks for Today</h1>
             <div>
                 <Tasks />
             </div>

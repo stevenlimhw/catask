@@ -1,10 +1,10 @@
-import React, { Fragment, useState, useEffect } from 'react'
-import { Link, Outlet, useNavigate } from 'react-router-dom'
+import React from 'react'
+import { Link, Outlet } from 'react-router-dom'
 import '../../../assets/stylesheets/application.css'
 import { UserContext } from '../App'
 
 const NoUserView = (props) => {
-    const { handleLogin, handleLogout, userLog } = props;
+    const { handleLogin, userLog } = props;
 
     return ( <UserContext.Provider value={{ userLog, handleLogin }}>
         <div className="header">

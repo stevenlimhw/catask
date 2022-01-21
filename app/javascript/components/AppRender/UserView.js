@@ -1,5 +1,5 @@
-import React, { Fragment, useState, useEffect } from 'react'
-import { Outlet, useNavigate, NavLink } from 'react-router-dom'
+import React from 'react'
+import { Outlet, NavLink } from 'react-router-dom'
 import '../../../assets/stylesheets/application.css'
 import { UserContext } from '../App'
 
@@ -10,8 +10,6 @@ const UserView = (props) => {
         <div className="header">
             <nav>
                 <div className="navigation">
-                    <NavLink to='/' 
-                        className={({ isActive }) => isActive ? "active-link" : "navigation-link"}>Home</NavLink>
                     <NavLink to='dashboard' 
                         className={({ isActive }) => isActive ? "active-link" : "navigation-link"}>Dashboard</NavLink>
                     <NavLink to='today' 

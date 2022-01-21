@@ -1,6 +1,6 @@
 import axios from 'axios';
-import React, { Fragment, useState, useEffect } from 'react'
-import { Link, Outlet, useNavigate } from 'react-router-dom'
+import React, { useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 import '../../assets/stylesheets/application.css'
 import UserView from './AppRender/UserView';
 import NoUserView from './AppRender/NoUserView';
@@ -53,7 +53,6 @@ const App = () => {
                     user: {}
                 });
             }
-        // console.log(resp.data.logged_in) // debug
         })
         .catch(err => console.log(err));
     }
