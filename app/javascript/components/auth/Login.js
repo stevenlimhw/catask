@@ -47,6 +47,7 @@ const Login = () => {
     return (
         <div className="taskdetails-background">
             <h1>Log in</h1>
+            <h4>Refresh the browser if you have previously logged out.</h4>
             <form onSubmit={handleSubmit} className="taskdetails-wrapper">
                 <input
                     className="taskdetails-input"
