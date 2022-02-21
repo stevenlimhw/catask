@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
             <Route path="addtaskadvanced" element={<AddTask isQuickTask={false} />} />
             <Route path="register" element={<Register />} />
             <Route path="login" element={<Login />} />
-            <Route path="*" element={<h1>Not Found</h1>} />
+            <Route path="*" element={<div className="home-wrapper"><h1>404 Not Found</h1></div>} />
           </Route>
         </Routes>
     </Router>,

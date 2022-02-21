@@ -4,7 +4,7 @@ const Form = (props) => {
     const { handleChange, handleSubmit, task } = props;
     return ( <div>
         <h1>Advanced options</h1>
-        <div className="taskdetails-wrapper">
+        <div className="advanced-options-wrapper">
             <form onSubmit={handleSubmit}>
                 <input
                     placeholder="task title"
