@@ -75,6 +75,12 @@ h4 {
 
 /* dashboard */
 
+.header-title {
+  margin-top: 1rem;
+  padding: 0.5rem 0 2rem 0;
+  background-color: #ffd700;
+}
+
 .dashboard-wrapper {
   display: grid;
   gap: 1rem;
@@ -355,7 +361,8 @@ h4 {
   padding: 1rem;
   margin: 5rem 30rem;
   border-radius: 8px;
-  background-color: white;
+  /* background-color: white; */
+  background-color: #ffd700;
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
 

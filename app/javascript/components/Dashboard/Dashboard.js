@@ -9,7 +9,9 @@ const Dashboard = () => {
     const { userLog } = useContext(UserContext);
     const email = userLog.user.email;
     return <div>
-        <h1>Dashboard</h1>
+        <div className="header-title">
+            <h1>Dashboard</h1>
+        </div>
         <h4>Welcome back, {email}</h4>
         <div>
             <AddTask isQuickForm={true}/>
